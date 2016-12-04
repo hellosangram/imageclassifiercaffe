@@ -96,17 +96,19 @@ To overcome the small dataset problem I used Keras libary for data augmentation 
 <h3>
 <a id="data-manipulation" class="anchor" href="#data-manipulation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data Manipulation</h3>
 
-<p><em>Data Augmentation</em> I used Keras library for data augmentation, the inbuilt function ImageDataGenerator created for a kaggle challenge and later adopted in the library is a beautiful and time saving tool.
-<em>Data Resizing</em> I resized the data from standard 227<em>227 used for ImageNet to 1024</em>1024 which would surely have helped as medical images are very sensitive to data loss and I wanted to avoid that. But alas my laptop could not support loading such a monstrous dataset and I had to maroon the idea alone.
-<em>Data Division</em> This idea came in but too late to implement that I could have created 20 images from one image of 1024<em>1024 by using standard 227</em>227 image thus making the data more mixed without augmentation.
+<p><em>Data Augmentation</em> I used Keras library for data augmentation, the inbuilt function ImageDataGenerator created for a kaggle challenge and later adopted in the library is a beautiful and time saving tool.<br>
+<em>Data Resizing</em> I resized the data from standard 227<em>227 used for ImageNet to 1024</em>1024 which would surely have helped as medical images are very sensitive to data loss and I wanted to avoid that. But alas my laptop could not support loading such a monstrous dataset and I had to maroon the idea alone.<br>
+<em>Data Division</em> This idea came in but too late to implement that I could have created 20 images from one image of 1024<em>1024 by using standard 227</em>227 image thus making the data more mixed without augmentation.<br>
 <em>Feature Marking in Data</em> I was reading Kaggle competition for detecting individual whales by spotting their spouts and identifying it with them. They too had a small dataset of 4000(yes way bigger than ours but still). The approach they took was to make the network focus on those features, I wanted to implement this but it was a moonshot considering data annotation and introduction of a data layer for the network to have some manual features added.</p>
 
-<p>Part3: Run the implementation.
-<em>Run: createData.py</em> A script to change the nomenclature to one I find suitable for easy use.
-<em>Run: dataAugmentation.py</em> For creating augmented data.
-<strong>Either</strong> <em>Run: createLmdb.py</em> Creates lmdb files for caffe to pick and process. Use this if data is not big.
-<strong>Or</strong> * <em>Run: createLmdbTxt.py</em> Creates txt file containing the relative image paths for the ensuing .sh file
-       * <em>Run: create_lmdb.sh</em> Used this .sh file as suggested in caffe issues if the data set becomes too large to hold in the memory, this files processes thousand at one time thus a life saver when I tested 1024*1024 images in AlexNet.</p>
+<h3>
+<a id="part3-run-the-implementation" class="anchor" href="#part3-run-the-implementation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Part3: Run the implementation.</h3>
+
+<p><em>Run: createData.py</em> A script to change the nomenclature to one I find suitable for easy use.<br>
+<em>Run: dataAugmentation.py</em> For creating augmented data.<br>
+<strong>Either</strong> <em>Run: createLmdb.py</em> Creates lmdb files for caffe to pick and process. Use this if data is not big.<br>
+<strong>Or</strong> * <em>Run: createLmdbTxt.py</em> Creates txt file containing the relative image paths for the ensuing .sh file<br>
+       * <em>Run: create_lmdb.sh</em> Used this .sh file as suggested in caffe issues if the data set becomes too large to hold in the memory, this files processes thousand at one time thus a life saver when I tested 1024*1024 images in AlexNet.  </p>
 
 <p>Create binary proto file for mean values using /home/sangram/caffe/build/tools/caffe train --solver=/home/sangram/deepLearning/deeplearning-medical-images/caffe_models/caffe_model_2/solver_2.prototxt 2&gt;&amp;1 | tee /home/sangram/deepLearning/deeplearning-medical-images/caffe_models/caffe_model_2/model_2_train.log command on terminal</p>
 
